@@ -42,7 +42,7 @@ public class UserService {
         user.setFirstName(registerRequest.getName());
         user.setUserName(registerRequest.getUserName());
         user.setLastName(registerRequest.getLastName());
-        user.setRoles(registerRequest.getRoles());
+        user.setRoles(roleSet);
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
 
         userRepo.save(user);

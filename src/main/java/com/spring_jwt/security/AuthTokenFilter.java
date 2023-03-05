@@ -76,6 +76,7 @@ filterChain.doFilter(request,response);
        String header= request.getHeader("Authorization");
        if(StringUtils.hasText(header) && header.startsWith("Bearer ")){
             return header.substring(7);
+            //Bearer sadfsdf
         }
 return null;
     }
