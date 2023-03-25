@@ -28,7 +28,7 @@ public class UserService {
     }
 
 
-    public void registerRequest(RegisterRequest registerRequest) {
+    public User registerRequest(RegisterRequest registerRequest) {
         if(userRepo.existsByUserName(registerRequest.getUserName())){
             throw new ConflictException("This username is  already in use");
         }
@@ -46,6 +46,6 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
 
         userRepo.save(user);
-
+return user;
     }
 }

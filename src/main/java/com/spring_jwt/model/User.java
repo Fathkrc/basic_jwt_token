@@ -3,6 +3,7 @@ package com.spring_jwt.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,12 +14,13 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "user_table")
 @Data
-
+@EqualsAndHashCode
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 25,nullable = false)
+    @NotBlank
     private String firstName;
     @Column(length = 25,nullable = false)
     private String lastName;
@@ -34,4 +36,11 @@ public class User {
     @ManyToMany(fetch=FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
+    public User(String firstName, String lastName, String userName, String password, Set<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.roles = roles;
+    }
 }

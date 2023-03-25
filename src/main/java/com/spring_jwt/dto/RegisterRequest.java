@@ -1,6 +1,7 @@
 package com.spring_jwt.dto;
 
 import com.spring_jwt.model.Role;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
 public class RegisterRequest {
 
     @NotNull
@@ -33,4 +35,11 @@ public class RegisterRequest {
     private String password;
 
     private Set<Role> roles;
+
+    public RegisterRequest(String name, String lastName, String userName, String password) {
+        this.name = name;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+    }
 }
